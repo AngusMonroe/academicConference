@@ -37,7 +37,7 @@ class A01Spide(Spider):
         conference = response.xpath('//div[@class="discuss2Page"]//div[@class="dec"]')
 
         # open file and write
-        csvfile = open('output/A-01.csv','a',newline='',errors='ignore')
+        csvfile = open('output/A-01.csv', 'a', newline='', errors='ignore', encoding='gbk')
         writer = csv.writer(csvfile)
 
         for i in range(len(conference)):
@@ -48,7 +48,7 @@ class A01Spide(Spider):
             for j in range(len(info_value)):
                 content += info_name[j].extract() + info_value[j].extract() + ' '
             # write to file
-            writer.writerow([title,content])
+            writer.writerow([title, content])
 
         # close the file
         csvfile.flush()
