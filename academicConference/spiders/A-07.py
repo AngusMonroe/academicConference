@@ -32,6 +32,10 @@ class A07Spide(Spider):
                 url[i] = re.sub('<[^>]+>', '', url[i])
                 url[i] = re.sub('[\t\n\r]', '', url[i])
                 url[i] = re.sub(' +', ' ', url[i])
+                if re.match('\.\./', url[i]):
+                    url[i] = "http://astronomy.pmo.cas.cn/" + re.sub('\.\./', '', url[i])
+                if re.match('\./', url[i]):
+                    url[i] = "http://astronomy.pmo.cas.cn/xsjl/gjxsjl/" + re.sub('\.\./', '', url[i])
                 u = url[i]
 
             # write to file
