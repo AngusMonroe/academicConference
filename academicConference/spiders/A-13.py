@@ -26,7 +26,7 @@ class A13Spide(Spider):
         c1 = response.xpath('//p[@align="justify"]').extract()
         c2 = response.xpath('//font[@size="3"]/span').extract()
         c3 = response.xpath('//div[@class="TRS_Editor"]').extract()
-        c3 = response.xpath('//div[@class="textxl nrhei"]').extract()
+        c4 = response.xpath('//div[@class="textxl nrhei"]').extract()
 
         content_temp = ''
         for i in c1:
@@ -34,6 +34,8 @@ class A13Spide(Spider):
         for i in c2:
             content_temp += i + ' '
         for i in c3:
+            content_temp += i + ' '
+        for i in c4:
             content_temp += i + ' '
 
         content_temp = re.sub('<[^>]+>', '', content_temp)
@@ -49,7 +51,6 @@ class A13Spide(Spider):
 
         relative_urls = response.xpath('..//a[@href]').re("<a href=\"([^\"]*)\"")
         if relative_urls:
-            relative_url = ''
             for i in range(len(relative_urls)):
                 relative_url = relative_urls[i]
                 relative_url = re.sub('<[^>]+>', '', relative_url)
